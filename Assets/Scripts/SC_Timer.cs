@@ -12,6 +12,8 @@ public class SC_Timer : MonoBehaviour
     private Vector2 maxEarth, minEarth, maxMoon, minMoon;
 
     private float lerp;
+
+    public float time;
     
     
     void Start()
@@ -26,6 +28,8 @@ public class SC_Timer : MonoBehaviour
     
     void Update()
     {
+        time += Time.deltaTime;
+
         lerp += Time.deltaTime/60;
 
         earth.transform.localScale = Vector2.Lerp(maxEarth, minEarth, lerp);
