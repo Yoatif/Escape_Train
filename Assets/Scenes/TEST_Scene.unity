@@ -431,6 +431,7 @@ MonoBehaviour:
   minEarth: {x: 1, y: 1}
   maxMoon: {x: 50, y: 50}
   minMoon: {x: 8, y: 8}
+  time: 0
 --- !u!4 &606638211
 Transform:
   m_ObjectHideFlags: 0
@@ -649,8 +650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1309707483}
   holdPos: {fileID: 1065694605}
-  throwForce: 500
   pickUpRange: 5
+  canInteract: 0
 --- !u!1 &1065694604
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +965,7 @@ GameObject:
   - component: {fileID: 1340584853}
   - component: {fileID: 1340584852}
   - component: {fileID: 1340584856}
+  - component: {fileID: 1340584857}
   m_Layer: 0
   m_Name: Cube
   m_TagString: canPickUp
@@ -1084,6 +1086,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1340584857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340584851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f9e572b7dfcb2479eadbb065ff086d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1309707483}
+  holdPos: {fileID: 1065694605}
+  myself: {fileID: 1340584851}
+  isPicked: 0
+  throwForce: 500
+  pickUpScript: {fileID: 0}
 --- !u!1 &1891377696
 GameObject:
   m_ObjectHideFlags: 0
