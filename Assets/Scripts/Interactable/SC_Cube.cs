@@ -11,11 +11,16 @@ public class SC_Cube : C_Interactable
     public bool isPicked;
     public float throwForce = 500f;
     public SC_PickUp pickUpScript;
+    public SC_FPSController fpsController;
 
-    private float rotationSensitivity = 1f;
+
+    [SerializeField]
+    private float angleX, angleY, angleZ;
+
+    
     private Rigidbody myselfRigidbody;
     private int LayerNumber;
-
+    
 
 
 
@@ -24,26 +29,20 @@ public class SC_Cube : C_Interactable
         LayerNumber = LayerMask.NameToLayer("holdLayer");
         myselfRigidbody = myself.GetComponent<Rigidbody>();
         pickUpScript = FindObjectOfType<SC_PickUp>();
+        fpsController = FindObjectOfType<SC_FPSController>();
     }
 
     void Update()
     {
         if (isPicked)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
                 DropObject();
                 MoveObject();
-                StopClipping();
+                
 
-
-            }
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-
-                ThrowObject();
-                StopClipping();
 
             }
             RotateObject();
@@ -54,12 +53,15 @@ public class SC_Cube : C_Interactable
 
     public override void Interact( )
     {
-            isPicked = true;
-            myselfRigidbody.isKinematic = true;
-            myself.transform.parent = holdPos.transform;
-            myself.layer = LayerNumber;
+        isPicked = true;
+        myselfRigidbody.isKinematic = true;
+        myself.transform.Rotate(0, 0, 0, Space.World);
+        myself.transform.parent = holdPos.transform;
 
-            Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+
+        myself.layer = LayerNumber;
+
+        Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         
 
 
@@ -67,24 +69,11 @@ public class SC_Cube : C_Interactable
 
     void MoveObject()
     {
-
+        myself.transform.Rotate(0, 0, 0, Space.World);
         myself.transform.position = holdPos.transform.position;
     }
 
-    void StopClipping()     //On empeche le clipping de l'objet tenu
-    {
-        var clipRange = Vector3.Distance(myself.transform.position, transform.position);
 
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.TransformDirection(Vector3.forward), clipRange);
-
-        if (hits.Length > 1)
-        {
-
-            myself.transform.position = transform.position + new Vector3(0f, -0.5f, 0f);
-
-        }
-    }
 
     //Fonction pour lâcher l'objet
     void DropObject()
@@ -98,31 +87,36 @@ public class SC_Cube : C_Interactable
         
     }
 
-    //Fonction pour lancer l'objet
-    void ThrowObject()
-    {
-        isPicked = false;
-        Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        myself.layer = 0;
-        myselfRigidbody.isKinematic = false;
-        myself.transform.parent = null;
-        myselfRigidbody.AddForce(transform.forward * throwForce);
-        pickUpScript.canInteract=true;
-        
-    }
+   
 
 
     void RotateObject()
     {
         if (Input.GetKey(KeyCode.R))
         {
+            fpsController.canMove = false;
+            if(Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                myself.transform.Rotate(0,90,0,Space.World);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                myself.transform.Rotate(0,-90, 0, Space.World);
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                myself.transform.Rotate(0, 0, 90,Space.World);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                myself.transform.Rotate(0, 0,-90, Space.World);
+            }
 
-            float XaxisRotation = Input.GetAxis("Mouse X") * rotationSensitivity;
-            float YaxisRotation = Input.GetAxis("Mouse Y") * rotationSensitivity;
-
-            myself.transform.Rotate(Vector3.down, XaxisRotation);
-            myself.transform.Rotate(Vector3.right, YaxisRotation);
         }
+        else
+        {
+            fpsController.canMove = true;
+        }       
        
     }
 }
