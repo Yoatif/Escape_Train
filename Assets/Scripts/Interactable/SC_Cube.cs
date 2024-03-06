@@ -19,6 +19,7 @@ public class SC_Cube : C_Interactable
 
     
     private Rigidbody myselfRigidbody;
+    
     private int LayerNumber;
     
 
@@ -51,6 +52,7 @@ public class SC_Cube : C_Interactable
            
     }
 
+    //Fonction d'interaction
     public override void Interact( )
     {
         isPicked = true;
@@ -67,6 +69,7 @@ public class SC_Cube : C_Interactable
 
     }
 
+    //FCT qui met l'objet dans les mains du joueur
     void MoveObject()
     {
         myself.transform.Rotate(0, 0, 0, Space.World);
@@ -89,7 +92,7 @@ public class SC_Cube : C_Interactable
 
    
 
-
+    //Fonction pour rotate l'objet dans les mains (WIP)
     void RotateObject()
     {
         if (Input.GetKey(KeyCode.R))

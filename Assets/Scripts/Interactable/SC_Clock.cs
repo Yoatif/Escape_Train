@@ -2,16 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SC_Clock : MonoBehaviour
+public class SC_Clock : C_Interactable
 {
-    // Start is called before the first frame update
+    public GameObject myself;
+    public GameObject myButton;
+
+    public Transform holdPos;
+
+
+    public SC_FPSController fpsController;
+    public SC_PickUp pickUpScript;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
+    {
+        
+    }
+
+    public override void Interact()
     {
         
     }
