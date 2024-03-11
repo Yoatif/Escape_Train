@@ -92,6 +92,5 @@ public class SC_Wire : C_Interactable
         myselfRigidbody.isKinematic = false;
         myself.transform.parent = null;
         pickUpScript.canInteract = true;
-
     }
 }
