@@ -12,6 +12,7 @@ public class SC_Cube : C_Interactable
     public float throwForce = 500f;
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
+    private bool rotating;
 
 
     [SerializeField]
@@ -37,11 +38,12 @@ public class SC_Cube : C_Interactable
     {
         if (isPicked)
         {
+            myself.transform.position = holdPos.transform.position;
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
                 DropObject();
-                MoveObject();
+                
                 
 
 
@@ -56,12 +58,14 @@ public class SC_Cube : C_Interactable
     public override void Interact( )
     {
         isPicked = true;
-        myselfRigidbody.isKinematic = true;
-        myself.transform.Rotate(0, 0, 0, Space.World);
+        //myselfRigidbody.isKinematic = true;
+        myself.transform.rotation = Camera.main.transform.rotation;
+        myself.transform.Rotate(0, 180, 0);
         myself.transform.parent = holdPos.transform;
-
+        myself.transform.position = holdPos.transform.position;
 
         myself.layer = LayerNumber;
+        myselfRigidbody.freezeRotation = true;
 
         Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         
@@ -69,12 +73,8 @@ public class SC_Cube : C_Interactable
 
     }
 
-    //FCT qui met l'objet dans les mains du joueur
-    void MoveObject()
-    {
-        myself.transform.Rotate(0, 0, 0, Space.World);
-        myself.transform.position = holdPos.transform.position;
-    }
+    
+    
 
 
 
@@ -87,10 +87,11 @@ public class SC_Cube : C_Interactable
         myselfRigidbody.isKinematic = false;
         myself.transform.parent = null;
         pickUpScript.canInteract = true;
-        
+        myselfRigidbody.freezeRotation = false;
     }
 
    
+
 
     //Fonction pour rotate l'objet dans les mains (WIP)
     void RotateObject()
@@ -98,28 +99,38 @@ public class SC_Cube : C_Interactable
         if (Input.GetKey(KeyCode.R))
         {
             fpsController.canMove = false;
-            if(Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                myself.transform.Rotate(0,90,0,Space.World);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                myself.transform.Rotate(0,-90, 0, Space.World);
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                myself.transform.Rotate(0, 0, 90,Space.World);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                myself.transform.Rotate(0, 0,-90, Space.World);
-            }
-
+            
+            
+            StartCoroutine(rotateObject(myself, new Vector3(0, 180, 0), 1));
+          
         }
         else
         {
             fpsController.canMove = true;
         }       
        
+    }
+
+
+    IEnumerator rotateObject(GameObject gameObjectToMove, Vector3 eulerAngles, float duration)
+    {
+        if (rotating)
+        {
+            yield break;
+        }
+        rotating = true;
+
+        Vector3 newRot = gameObjectToMove.transform.eulerAngles + eulerAngles;
+
+        Vector3 currentRot = gameObjectToMove.transform.eulerAngles;
+
+        float counter = 0;
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            gameObjectToMove.transform.eulerAngles = Vector3.Lerp(currentRot, newRot, counter / duration);
+            yield return null;
+        }
+        rotating = false;
     }
 }
