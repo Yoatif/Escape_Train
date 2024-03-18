@@ -101,7 +101,7 @@ public class SC_Cube : C_Interactable
             fpsController.canMove = false;
             
             
-            StartCoroutine(rotateObject(myself, new Vector3(0, 180, 0), 1));
+            StartCoroutine(rotateObject(myself, Vector3.up  *90, 1));
           
         }
         else
@@ -120,15 +120,15 @@ public class SC_Cube : C_Interactable
         }
         rotating = true;
 
-        Vector3 newRot = gameObjectToMove.transform.eulerAngles + eulerAngles;
+        Vector3 newRot = gameObjectToMove.transform.localEulerAngles + eulerAngles;
 
-        Vector3 currentRot = gameObjectToMove.transform.eulerAngles;
+        Vector3 currentRot = gameObjectToMove.transform.localEulerAngles;
 
         float counter = 0;
         while (counter < duration)
         {
             counter += Time.deltaTime;
-            gameObjectToMove.transform.eulerAngles = Vector3.Lerp(currentRot, newRot, counter / duration);
+            gameObjectToMove.transform.localEulerAngles = Vector3.Lerp(currentRot, newRot, counter / duration);
             yield return null;
         }
         rotating = false;
