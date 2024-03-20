@@ -13,7 +13,9 @@ public class SC_Wire : C_Interactable
     public SC_FPSController fpsController;
     public float smoothSpeed;
     public string tagObjectCollider;
-    public float throwForce = 0.1f;
+    public float throwForce = 0.0f;
+    public bool puzzleIsGood = false;
+    
 
 
     [SerializeField]
@@ -41,9 +43,6 @@ public class SC_Wire : C_Interactable
 
                 DropObject();
                 FollowingCamera();
-
-
-
             }
 
         }
@@ -73,17 +72,26 @@ public class SC_Wire : C_Interactable
         transform.position = objectPosition;
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    
+    public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(tagObjectCollider))
+        if (isPicked == false)
         {
-            if (myselfRigidbody != null)
+            if (collision.gameObject.tag == tagObjectCollider)
             {
+                Debug.Log("le bon est dedans !");
                 myselfRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+                puzzleIsGood = true;
+            }
+            else
+            {
+
             }
         }
+        
     }
-
+    
     void DropObject()
     {
         isPicked = false;
