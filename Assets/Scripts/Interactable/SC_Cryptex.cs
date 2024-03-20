@@ -8,19 +8,14 @@ public class SC_Cryptex : C_Interactable
     public Transform holdPos;
     public GameObject myself;
     public bool isPicked;
-    public float throwForce = 500f;
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
-    
-
-
-    [SerializeField]
-    private float angleX, angleY, angleZ;
-
-
     private Rigidbody myselfRigidbody;
 
-    
+    [SerializeField]
+    private Vector3 originPos;
+    [SerializeField]
+    private Quaternion originRot;
 
 
 
@@ -38,10 +33,10 @@ public class SC_Cryptex : C_Interactable
         if (isPicked)
         {
             myself.transform.position = holdPos.transform.position;
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
 
-                DropObject();
+                PutBack();
             }
             
 
@@ -54,11 +49,14 @@ public class SC_Cryptex : C_Interactable
     public override void Interact()
     {
 
-        
-        
+        fpsController.canMove = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        pickUpScript.canInteract = false;
+
 
         isPicked = true;
-        //myselfRigidbody.isKinematic = true;
         myself.transform.rotation = Camera.main.transform.rotation;
         myself.transform.Rotate(0, 0, 90);
         myself.transform.parent = holdPos.transform;
@@ -79,16 +77,20 @@ public class SC_Cryptex : C_Interactable
 
 
     //Fonction pour lâcher l'objet
-    void DropObject()
+    void PutBack()
     {
        
         isPicked = false;
         Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         myself.layer = 0;
-        myselfRigidbody.isKinematic = false;
         myself.transform.parent = null;
         pickUpScript.canInteract = true;
         myselfRigidbody.freezeRotation = false;
+        fpsController.canMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        myself.transform.position = originPos;
+        myself.transform.rotation= originRot;
     }
 
 
