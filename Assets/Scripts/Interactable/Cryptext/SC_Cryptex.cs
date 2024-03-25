@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SC_Cryptex : C_Interactable
 {
@@ -17,12 +18,14 @@ public class SC_Cryptex : C_Interactable
     [SerializeField]
     private Quaternion originRot;
 
+    public bool canBeUsed;
 
+    public GameObject crosshair;
 
 
     private void Start()
     {
-        
+        canBeUsed = true;
         myselfRigidbody = myself.GetComponent<Rigidbody>();
         pickUpScript = FindObjectOfType<SC_PickUp>();
         fpsController = FindObjectOfType<SC_FPSController>();
@@ -48,6 +51,11 @@ public class SC_Cryptex : C_Interactable
     //Fonction d'interaction
     public override void Interact()
     {
+        if (canBeUsed) { 
+
+        crosshair.SetActive(false);
+        
+
 
         fpsController.canMove = false;
         Cursor.lockState = CursorLockMode.None;
@@ -58,7 +66,7 @@ public class SC_Cryptex : C_Interactable
 
         isPicked = true;
         myself.transform.rotation = Camera.main.transform.rotation;
-        myself.transform.Rotate(0, 0, 90);
+        myself.transform.Rotate(270, 0, 90);
         myself.transform.parent = holdPos.transform;
         myself.transform.position = holdPos.transform.position;
 
@@ -67,8 +75,11 @@ public class SC_Cryptex : C_Interactable
 
         Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
 
-
-
+        }
+        else
+        {
+            print("Already Solved");
+        }
     }
 
 
@@ -77,9 +88,11 @@ public class SC_Cryptex : C_Interactable
 
 
     //Fonction pour lâcher l'objet
-    void PutBack()
+    public void PutBack()
     {
-       
+
+        crosshair.SetActive(true);
+
         isPicked = false;
         Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         myself.layer = 0;
