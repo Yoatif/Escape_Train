@@ -12,6 +12,8 @@ public class SC_Cryptex : C_Interactable
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
     private Rigidbody myselfRigidbody;
+    public GameObject panelUP;
+    public GameObject panelDOWN;
 
     [SerializeField]
     private Vector3 originPos;
@@ -54,7 +56,8 @@ public class SC_Cryptex : C_Interactable
         if (canBeUsed) { 
 
         crosshair.SetActive(false);
-        
+        panelUP.SetActive(true);
+        panelDOWN.SetActive(true);
 
 
         fpsController.canMove = false;
@@ -92,6 +95,9 @@ public class SC_Cryptex : C_Interactable
     {
 
         crosshair.SetActive(true);
+
+        panelUP.SetActive(false);
+        panelDOWN.SetActive(false);
 
         isPicked = false;
         Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);

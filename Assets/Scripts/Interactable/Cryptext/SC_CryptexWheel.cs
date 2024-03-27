@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SC_CryptexWheel : C_Interactable
 {
@@ -13,22 +14,20 @@ public class SC_CryptexWheel : C_Interactable
 
 
 
-    private void OnMouseDown()
+
+
+    public void RotateUP()
     {
-        Interact();
-        Debug.Log("hayaya");
+        StartCoroutine(rotate(myself, Vector3.down * 360 / 26, 0.2f));
+    }
+
+    public void RotateDOWN()
+    {
+        StartCoroutine(rotate(myself, Vector3.up * 360 / 26, 0.2f));
     }
 
 
-    public override void Interact()
-    {
-        StartCoroutine(rotateObject(myself, Vector3.up * (360/26), 0.2f));
-    }
-
-
-
-
-    IEnumerator rotateObject(GameObject gameObjectToMove, Vector3 eulerAngles, float duration)
+    IEnumerator rotate(GameObject gameObjectToMove, Vector3 eulerAngles, float duration)
     {
         if (rotating)
         {
@@ -49,4 +48,6 @@ public class SC_CryptexWheel : C_Interactable
         }
         rotating = false;
     }
+
+    
 }
