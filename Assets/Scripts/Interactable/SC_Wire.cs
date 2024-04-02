@@ -58,7 +58,7 @@ public class SC_Wire : C_Interactable
 
         myself.layer = LayerNumber;
 
-        Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        //Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
     }
 
     void FollowingCamera()
@@ -74,7 +74,7 @@ public class SC_Wire : C_Interactable
 
 
     
-    public void OnCollisionEnter(Collision collision)
+    /*public void OnCollisionEnter(Collision collision)
     {
         if (isPicked == false)
         {
@@ -90,15 +90,20 @@ public class SC_Wire : C_Interactable
             }
         }
         
-    }
+    }*/
     
     void DropObject()
     {
         isPicked = false;
-        Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
+        //Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         myself.layer = 0;
         myselfRigidbody.isKinematic = false;
         myself.transform.parent = null;
         pickUpScript.canInteract = true;
+    }
+
+    public string Color()
+    {
+        return tagObjectCollider;
     }
 }

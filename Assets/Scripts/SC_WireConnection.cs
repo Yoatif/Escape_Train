@@ -1,31 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class SC_WireConnection : SC_PuzzleManager
+public class SC_WireConnection : MonoBehaviour
 {
-    public string targetTag;
-    public GameObject[] socket;    
-    public GameObject[] ValidatingSphere;
-    public Material[] validatingLight;
+
+    public string colorToCombine;
+
+    public GameObject[] plug;
 
 
-    public SC_WireConnection()
-    {
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
+        
+
     }
 
-    // Update is called once per frame
     void Update()
-    { 
+    {
+
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        /*if (collision.plug.Color == colorToCombine)
+        {
 
-    
-
-    
+        }*/
+    }
 }
