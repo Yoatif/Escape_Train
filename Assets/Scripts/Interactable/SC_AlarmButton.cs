@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class SC_AlarmButton : MonoBehaviour
 {
-    private List<int> ClickedObjectValue = new List<int>();
+    [SerializeField]
+    //private List<int> ClickedObjectValue = new List<int>();
+    public List<string> ClickedObjectValue = new List<string>();
 
     [SerializeField]
-    private List<int> AlarmCode = new List<int>();
+    private List<string> AlarmCode = new List<string>();
 
-
-    private int clickedCounter = 0;
+    private string codeString;
     public bool alarm = false;
+    private int count;
+
+    public AudioSource alarmSound;
 
     private void Awake()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             int randomNumber = Random.Range(1, 9);
-            AlarmCode[i] = randomNumber;
+            codeString = randomNumber.ToString();
+            AlarmCode[i] = codeString;
+            Debug.Log("le chiffre a trouver est :" + AlarmCode[i]);
         }
+        print("le code a trouver est " + AlarmCode[0] + AlarmCode[1] + AlarmCode[2] + AlarmCode[3]);
     }
 
-    public void ReceiveValue(int receivedValue)
+    public void ReceiveValue(string receivedValue)
     {
         ClickedObjectValue.Add(receivedValue);
-        clickedCounter++;
+
         Debug.Log(ClickedObjectValue[0]);
         Debug.Log(ClickedObjectValue[1]);
         Debug.Log(ClickedObjectValue[2]);
@@ -34,23 +41,21 @@ public class SC_AlarmButton : MonoBehaviour
 
     void CheckValidation()
     {
-        if (clickedCounter == 4)
-        {
-            if (ClickedObjectValue[0] == AlarmCode[0])
-            {
-                if (ClickedObjectValue[1] == AlarmCode[1])
+            for (int i = 0;i < ClickedObjectValue.Count;i++) { 
+
+                if (ClickedObjectValue[i] == AlarmCode[i])
                 {
-                    if (ClickedObjectValue[2] == AlarmCode[2])
-                    {
-                        if (ClickedObjectValue[3] == AlarmCode[3])
-                        {
-                            StopAlarm();
-                        }
-                    }
+                Debug.Log("is good");
+                count++;
                 }
+                else { return; }
             }
+        if (count == 4)
+        {
+            StopAlarm();
         }
     }
+    
 
     public void StartAlarm()
     {
@@ -59,15 +64,15 @@ public class SC_AlarmButton : MonoBehaviour
     public void StopAlarm()
     {
         alarm = false;
+        Debug.Log("l'alarme est éteinte");
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
-        if(clickedCounter == 4)
-        {
-            CheckValidation();
-        }
-        
+        Debug.Log("try validation");
+    
+        CheckValidation();
     }
-
 }
+
+

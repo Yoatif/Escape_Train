@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class SC_Button : MonoBehaviour
 {
-    [SerializeField]
-    private int buttonValue;
-    [SerializeField]
-    private bool isClicked = false;
+    
+    public string buttonValue;
+
 
 
     public SC_AlarmButton alarmButton;
 
-    public int ReturnValue(int buttonValue)
+    /*public int ReturnValue(int buttonValue)
     {
+        Debug.Log("valeur du bouton :" + buttonValue);
         return buttonValue;
+
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (isClicked)
         {
-            isClicked = true;
+            
             alarmButton.ReceiveValue(buttonValue);
 
         }
+    }*/
+
+    public void OnMouseDown()
+    {
+        Debug.Log("la valeur est de :" +  buttonValue);
+        alarmButton.ReceiveValue(buttonValue);
     }
 }

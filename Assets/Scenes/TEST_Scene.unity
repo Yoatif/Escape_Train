@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 7063274}
   m_Layer: 0
   m_Name: Nbr_8
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,8 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 8
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &7063275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -238,8 +237,8 @@ Transform:
   m_GameObject: {fileID: 7063273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 3, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.5065, y: 1.576, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -392,7 +391,7 @@ GameObject:
   - component: {fileID: 366365341}
   m_Layer: 0
   m_Name: Nbr_9
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410,8 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 9
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &366365342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -492,8 +490,8 @@ Transform:
   m_GameObject: {fileID: 366365340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.916, y: 3, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.3974, y: 1.576, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -938,6 +936,7 @@ GameObject:
   - component: {fileID: 532526508}
   - component: {fileID: 532526507}
   - component: {fileID: 532526511}
+  - component: {fileID: 532526512}
   m_Layer: 0
   m_Name: ValidatingButton
   m_TagString: Untagged
@@ -1025,8 +1024,8 @@ Transform:
   m_GameObject: {fileID: 532526506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.191, y: 1.223, z: 3.74}
-  m_LocalScale: {x: 1, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.4488, y: 1.2440001, z: 3.74}
+  m_LocalScale: {x: 0.18683, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1043,8 +1042,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a5e74f446cfa144b75a457bc08c146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AlarmCode: 00000000000000000000000000000000
+  ClickedObjectValue: []
+  AlarmCode:
+  - 
+  - 
+  - 
+  - 
   alarm: 0
+--- !u!82 &532526512
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532526506}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 379a306fce3910a4aa328b060c564022, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 5
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 1000
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &542173675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,7 +1609,7 @@ GameObject:
   - component: {fileID: 833299618}
   m_Layer: 0
   m_Name: Nbr_1
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1527,8 +1627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 1
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &833299619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1609,8 +1708,8 @@ Transform:
   m_GameObject: {fileID: 833299617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 1.8010001, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.6186, y: 1.352, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -2525,7 +2624,7 @@ GameObject:
   - component: {fileID: 1094673467}
   m_Layer: 0
   m_Name: Nbr_3
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2543,8 +2642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 3
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &1094673468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2625,8 +2723,8 @@ Transform:
   m_GameObject: {fileID: 1094673466}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.916, y: 1.8010001, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.3974, y: 1.352, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -2751,7 +2849,7 @@ GameObject:
   - component: {fileID: 1241534640}
   m_Layer: 0
   m_Name: Nbr_7
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2769,8 +2867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 7
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &1241534641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2851,8 +2948,8 @@ Transform:
   m_GameObject: {fileID: 1241534639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 3, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.6186, y: 1.576, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -3109,7 +3206,7 @@ GameObject:
   - component: {fileID: 1475347156}
   m_Layer: 0
   m_Name: Nbr_4
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3127,8 +3224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 4
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &1475347157
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3209,8 +3305,8 @@ Transform:
   m_GameObject: {fileID: 1475347155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 2.4, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.6186, y: 1.4639001, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -3440,7 +3536,7 @@ GameObject:
   - component: {fileID: 1670304973}
   m_Layer: 0
   m_Name: Nbr_6
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3458,8 +3554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 6
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &1670304974
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3540,8 +3635,8 @@ Transform:
   m_GameObject: {fileID: 1670304972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.916, y: 2.4, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.3974, y: 1.4639001, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -3666,7 +3761,7 @@ GameObject:
   - component: {fileID: 1713001516}
   m_Layer: 0
   m_Name: Nbr_2
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3684,8 +3779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 2
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &1713001517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3766,8 +3860,8 @@ Transform:
   m_GameObject: {fileID: 1713001515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 1.8010001, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.5065, y: 1.352, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -3870,7 +3964,7 @@ GameObject:
   - component: {fileID: 1901491804}
   m_Layer: 0
   m_Name: Nbr_5
-  m_TagString: Untagged
+  m_TagString: numberCode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3888,8 +3982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonValue: 5
-  isClicked: 0
-  alarmButton: {fileID: 0}
+  alarmButton: {fileID: 532526511}
 --- !u!65 &1901491805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3970,8 +4063,8 @@ Transform:
   m_GameObject: {fileID: 1901491803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 2.4, z: 3.74}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -6.5065, y: 1.4639001, z: 3.74}
+  m_LocalScale: {x: 0.093415, y: 0.093415, z: 0.093415}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -4855,10 +4948,10 @@ SceneRoots:
   - {fileID: 833299622}
   - {fileID: 1713001520}
   - {fileID: 1094673471}
-  - {fileID: 532526510}
   - {fileID: 1475347160}
-  - {fileID: 366365345}
-  - {fileID: 7063278}
-  - {fileID: 1241534644}
   - {fileID: 1901491808}
   - {fileID: 1670304977}
+  - {fileID: 1241534644}
+  - {fileID: 7063278}
+  - {fileID: 366365345}
+  - {fileID: 532526510}

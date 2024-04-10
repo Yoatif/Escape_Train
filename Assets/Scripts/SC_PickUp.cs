@@ -36,6 +36,11 @@ public class SC_PickUp : MonoBehaviour
                         
                         PickUpObject(hit.transform.gameObject);  
                     }
+                    
+                    else if (hit.transform.gameObject.tag == "numberCode")
+                    {
+
+                    }
                 }
 
             }

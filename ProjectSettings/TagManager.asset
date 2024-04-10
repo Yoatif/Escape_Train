@@ -9,6 +9,7 @@ TagManager:
   - Yellow
   - Blue
   - Green
+  - numberCode
   layers:
   - Default
   - TransparentFX
