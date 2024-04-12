@@ -30,14 +30,18 @@ public class SC_PickUp : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))   //On trouve l'objet a coup de raycast
                 {
-                    
+
                     if (hit.transform.gameObject.tag == "canPickUp")  //Est-ce un objet interactible ?
                     {
-                        
-                        PickUpObject(hit.transform.gameObject);  
+
+                        PickUpObject(hit.transform.gameObject);
                     }
-                    
+
                     else if (hit.transform.gameObject.tag == "numberCode")
+                    {
+
+                    }
+                    else if (hit.transform.gameObject.tag == "wiredSocket")
                     {
 
                     }

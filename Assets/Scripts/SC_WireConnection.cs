@@ -9,11 +9,16 @@ public class SC_WireConnection : MonoBehaviour
     public string colorToCombine;
 
     public GameObject[] plug;
+    public GameObject validLight;
+
+    public Material material1;
+    public Material material2;
+
 
 
     void Start()
     {
-        
+
 
     }
 
@@ -24,9 +29,6 @@ public class SC_WireConnection : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        /*if (collision.plug.Color == colorToCombine)
-        {
-
-        }*/
+        
     }
 }

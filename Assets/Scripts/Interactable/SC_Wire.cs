@@ -14,12 +14,6 @@ public class SC_Wire : C_Interactable
     public float smoothSpeed;
     public string tagObjectCollider;
     public float throwForce = 0.0f;
-    public bool puzzleIsGood = false;
-    
-
-
-    [SerializeField]
-    private float angleX, angleY, angleZ;
 
 
     private Rigidbody myselfRigidbody;
@@ -40,7 +34,6 @@ public class SC_Wire : C_Interactable
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-
                 DropObject();
                 FollowingCamera();
             }
@@ -50,13 +43,7 @@ public class SC_Wire : C_Interactable
 
     public override void Interact()
     {
-        isPicked = true;
-        myselfRigidbody.isKinematic = true;
-        //myself.transform.Rotate(0, 0, 0, Space.World);
-        myself.transform.parent = holdPos.transform;
-
-
-        myself.layer = LayerNumber;
+        
 
         //Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
     }
@@ -74,23 +61,11 @@ public class SC_Wire : C_Interactable
 
 
     
-    /*public void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        if (isPicked == false)
-        {
-            if (collision.gameObject.tag == tagObjectCollider)
-            {
-                Debug.Log("le bon est dedans !");
-                myselfRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-                puzzleIsGood = true;
-            }
-            else
-            {
-
-            }
-        }
         
-    }*/
+        
+    }
     
     void DropObject()
     {
