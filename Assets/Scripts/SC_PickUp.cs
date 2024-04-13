@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,11 +40,11 @@ public class SC_PickUp : MonoBehaviour
 
                     else if (hit.transform.gameObject.tag == "numberCode")
                     {
-
+                        PickUpObject(hit.transform.gameObject);
                     }
                     else if (hit.transform.gameObject.tag == "wiredSocket")
                     {
-
+                        PickUpObject(hit.transform.gameObject);
                     }
                 }
 
@@ -64,13 +65,8 @@ public class SC_PickUp : MonoBehaviour
         }
     }
 
-
-    
-    
-
-    
-    
-
-   
-    
+    /*internal void PickUpObject(GameObject gameObject)
+    {
+        throw new NotImplementedException();
+    }*/
 }

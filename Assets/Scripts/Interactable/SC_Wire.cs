@@ -63,8 +63,7 @@ public class SC_Wire : C_Interactable
     
     public void OnCollisionEnter(Collision collision)
     {
-        
-        
+        Color();        
     }
     
     void DropObject()

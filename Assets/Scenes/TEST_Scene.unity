@@ -906,13 +906,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594277f1345116d4597a176dbf403efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySelf: {fileID: 526961056}
+  player: {fileID: 1309707483}
+  holdPos: {fileID: 1065694605}
+  myself: {fileID: 526961056}
+  isPicked: 0
   pickUpScript: {fileID: 963194229}
   fpsController: {fileID: 0}
-  holdPos: {fileID: 0}
   smoothSpeed: 0
-  variableString: Hello from ObjectB!
-  isPicked: 0
+  tagObjectCollider: Red
+  holdLayerNumber: 0
 --- !u!1 &532526506
 GameObject:
   m_ObjectHideFlags: 0

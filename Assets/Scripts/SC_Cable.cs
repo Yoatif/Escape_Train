@@ -1,60 +1,98 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class SC_Cable : C_Interactable
 {
-    
-    public GameObject mySelf;
 
+    public GameObject player;
+    public Transform holdPos;
+    public GameObject myself;
+    public bool isPicked;
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
-
-    public Transform holdPos;
     public float smoothSpeed;
-    public string variableString;
-    public bool isPicked;
+    public string tagObjectCollider;
 
+    public int holdLayerNumber;
 
-    private int layerNumber;
-    private Rigidbody myselfRigidbody;
+    private Vector3 initialPosition;
 
-    // Start is called before the first frame update
+    private Rigidbody myRigidBody;
+
     void Start()
     {
-        layerNumber = LayerMask.NameToLayer("holdLayer");
-        myselfRigidbody = mySelf.GetComponent<Rigidbody>();
-        pickUpScript = FindObjectOfType<SC_PickUp>();
-        fpsController = FindObjectOfType<SC_FPSController>();
-    }
-    
-    public void OnMouseOver()
-    {
-        
+        holdLayerNumber = LayerMask.NameToLayer("holdLayer");
+
+        myRigidBody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        
+        if (isPicked)
+        {
+            MoveObjectWithMouse();
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ReleaseObject();
+            }
+        }
+        else
+        {
+            if (IsObjectInCenter() && Input.GetKeyDown(KeyCode.E))
+            {
+                //pickUpScript.PickUpObject(gameObject);
+            }
+        }
     }
 
-    public override void Interact()
+    void MoveObjectWithMouse()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = Vector3.Distance(Camera.main.transform.position, transform.position);
+
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        Vector3 newPosition = new Vector3(worldPosition.x, transform.position.y, worldPosition.z);
+        transform.position = Vector3.Lerp(transform.position, newPosition, smoothSpeed * Time.deltaTime);
+    }
+
+    void PickUpObject()
     {
         isPicked = true;
-        myselfRigidbody.isKinematic = true;
-        mySelf.transform.parent = holdPos.transform;
-        mySelf.layer = layerNumber;
-        Debug.Log("Interacting with a cable");
-        
+        initialPosition = transform.position;
+
+        myRigidBody.isKinematic = true;
+        myRigidBody.detectCollisions = false;
     }
 
-    void DropObject()
+    public void ReleaseObject()
     {
         isPicked = false;
-        mySelf.layer = 0;
-        myselfRigidbody.isKinematic = false;
-        mySelf.transform.parent = null;
-        pickUpScript.canInteract = true;
+        transform.position = initialPosition;
+
+        myRigidBody.isKinematic = false;
+        myRigidBody.detectCollisions = true;
+    }
+
+    bool IsObjectInCenter()
+    {
+        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            return hit.collider.gameObject == gameObject;
+        }
+        return false;
+    }
+
+    public string GetTagObjectCollider()
+    {
+        return tagObjectCollider;
     }
 
 
