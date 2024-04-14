@@ -2073,18 +2073,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 897858611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094297aa5ffc5874e8d5c34b66b80e66, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1ca3d0368eab1428f22c00d9d3fb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorToCombine: Red
-  plug:
-  - {fileID: 892161891}
-  - {fileID: 1995638996}
-  - {fileID: 526961056}
-  - {fileID: 366924283}
-  validLight: {fileID: 1685533615}
-  material1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
-  material2: {fileID: 2100000, guid: 59fd263fc10736c47b61cac1f554bfe3, type: 2}
+  light: {fileID: 0}
+  lightMaterial1: {fileID: 0}
+  lightMaterial2: {fileID: 0}
+  pluggingPosition: {x: 0, y: 0, z: 0}
+  colorToDetect: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

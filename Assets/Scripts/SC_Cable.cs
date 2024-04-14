@@ -95,5 +95,14 @@ public class SC_Cable : C_Interactable
         return tagObjectCollider;
     }
 
+    public Vector3 GetInitialPosition()
+    {
+        return initialPosition;
+    }
 
+    public void ReturnToInitialPosition()
+    {
+        gameObject.transform.position = initialPosition;
+    }
 }
+
