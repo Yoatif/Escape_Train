@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class SC_Cable : C_Interactable
 {
 
-    public GameObject player;
-    public Transform holdPos;
-    public GameObject myself;
-    public bool isPicked;
+ 
+    public bool isPicked = false;
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
     public float smoothSpeed;
@@ -19,36 +17,33 @@ public class SC_Cable : C_Interactable
     public int holdLayerNumber;
 
     private Vector3 initialPosition;
+    private Vector3 newPosition;
 
     private Rigidbody myRigidBody;
 
     void Start()
     {
-        holdLayerNumber = LayerMask.NameToLayer("holdLayer");
 
         myRigidBody = GetComponent<Rigidbody>();
+        initialPosition = gameObject.transform.position;
     }
 
-    void Update()
+    /*private void OnMouseDown()
     {
         if (isPicked)
         {
+            Debug.Log("isPicked");
+            PickUpObject(gameObject);
             MoveObjectWithMouse();
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ReleaseObject();
-            }
         }
         else
         {
-            if (IsObjectInCenter() && Input.GetKeyDown(KeyCode.E))
-            {
-                //pickUpScript.PickUpObject(gameObject);
-            }
+            
+            Debug.Log("released");
+            ReleaseObject();
         }
     }
-
+    /*Following the mouvement of the mouse*/
     void MoveObjectWithMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -60,46 +55,42 @@ public class SC_Cable : C_Interactable
         transform.position = Vector3.Lerp(transform.position, newPosition, smoothSpeed * Time.deltaTime);
     }
 
-    void PickUpObject()
+    //catching the onject
+    void PickUpObject(GameObject gameObject)
     {
         isPicked = true;
-        initialPosition = transform.position;
+        newPosition = gameObject.transform.position;
 
         myRigidBody.isKinematic = true;
         myRigidBody.detectCollisions = false;
+        MoveObjectWithMouse();
     }
 
+    // free the objet at the new position
     public void ReleaseObject()
     {
         isPicked = false;
-        transform.position = initialPosition;
+        transform.position = newPosition;
 
         myRigidBody.isKinematic = false;
         myRigidBody.detectCollisions = true;
     }
-
-    bool IsObjectInCenter()
-    {
-        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            return hit.collider.gameObject == gameObject;
-        }
-        return false;
-    }
+    
+    //verify if the object is at the center of the screen
+    
 
     public string GetTagObjectCollider()
     {
         return tagObjectCollider;
     }
 
+    // return the initial position
     public Vector3 GetInitialPosition()
     {
         return initialPosition;
     }
 
+    /*return the object at his initial position*/
     public void ReturnToInitialPosition()
     {
         gameObject.transform.position = initialPosition;

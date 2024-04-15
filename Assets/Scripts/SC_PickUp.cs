@@ -36,15 +36,7 @@ public class SC_PickUp : MonoBehaviour
                     {
 
                         PickUpObject(hit.transform.gameObject);
-                    }
-
-                    else if (hit.transform.gameObject.tag == "numberCode")
-                    {
-                        PickUpObject(hit.transform.gameObject);
-                    }
-                    else if (hit.transform.gameObject.tag == "wiredSocket")
-                    {
-                        PickUpObject(hit.transform.gameObject);
+                    
                     }
                 }
 
@@ -65,8 +57,4 @@ public class SC_PickUp : MonoBehaviour
         }
     }
 
-    /*internal void PickUpObject(GameObject gameObject)
-    {
-        throw new NotImplementedException();
-    }*/
 }
