@@ -11,72 +11,56 @@ public class SC_Cable : C_Interactable
     public bool isPicked = false;
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
+    public Transform holdPos;
+    public GameObject myself;
     public float smoothSpeed;
     public string tagObjectCollider;
-
-    public int holdLayerNumber;
+    public GameObject player;
 
     private Vector3 initialPosition;
     private Vector3 newPosition;
 
     private Rigidbody myRigidBody;
+    private Transform myTransform;
 
-    void Start()
+    private void Start()
     {
-
-        myRigidBody = GetComponent<Rigidbody>();
-        initialPosition = gameObject.transform.position;
+        pickUpScript = FindObjectOfType<SC_PickUp>();
+        fpsController = FindObjectOfType<SC_FPSController>();
     }
 
-    /*private void OnMouseDown()
+    void Update()
     {
         if (isPicked)
         {
-            Debug.Log("isPicked");
-            PickUpObject(gameObject);
-            MoveObjectWithMouse();
-        }
-        else
-        {
-            
-            Debug.Log("released");
-            ReleaseObject();
+            Debug.Log("PickUp");
+            myself.transform.position = holdPos.transform.position;
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                DropObject();
+            }
         }
     }
-    /*Following the mouvement of the mouse*/
-    void MoveObjectWithMouse()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = Vector3.Distance(Camera.main.transform.position, transform.position);
 
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        Vector3 newPosition = new Vector3(worldPosition.x, transform.position.y, worldPosition.z);
-        transform.position = Vector3.Lerp(transform.position, newPosition, smoothSpeed * Time.deltaTime);
-    }
-
-    //catching the onject
-    void PickUpObject(GameObject gameObject)
+    //Fonction d'interaction
+    public override void Interact()
     {
         isPicked = true;
-        newPosition = gameObject.transform.position;
+        //myselfRigidbody.isKinematic = true;
+        myself.transform.rotation = Camera.main.transform.rotation;
+        myself.transform.Rotate(0, 180, 0);
+        myself.transform.parent = holdPos.transform;
+        myself.transform.position = holdPos.transform.position;
 
-        myRigidBody.isKinematic = true;
-        myRigidBody.detectCollisions = false;
-        MoveObjectWithMouse();
+        Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
     }
 
-    // free the objet at the new position
-    public void ReleaseObject()
+    //Fonction pour lâcher l'objet
+    void DropObject()
     {
-        isPicked = false;
-        transform.position = newPosition;
-
-        myRigidBody.isKinematic = false;
-        myRigidBody.detectCollisions = true;
+        myself.transform.parent = null;
+        pickUpScript.canInteract = true;
     }
-    
-    //verify if the object is at the center of the screen
     
 
     public string GetTagObjectCollider()

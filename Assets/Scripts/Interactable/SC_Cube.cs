@@ -73,11 +73,6 @@ public class SC_Cube : C_Interactable
 
     }
 
-    
-    
-
-
-
     //Fonction pour lâcher l'objet
     void DropObject()
     {

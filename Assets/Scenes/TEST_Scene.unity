@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 366924284}
   m_Layer: 0
   m_Name: Blue
-  m_TagString: wiredSocket
+  m_TagString: canPickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,8 +560,8 @@ MonoBehaviour:
   holdPos: {fileID: 963194228}
   myself: {fileID: 366924283}
   isPicked: 0
-  pickUpScript: {fileID: 0}
-  fpsController: {fileID: 0}
+  pickUpScript: {fileID: 963194229}
+  fpsController: {fileID: 1309707485}
   smoothSpeed: 4
   tagObjectCollider: Blue
   throwForce: 0.1
@@ -888,7 +888,7 @@ Transform:
   m_GameObject: {fileID: 526961056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.38409996, y: 1.0863001, z: 1}
+  m_LocalPosition: {x: -0.3841, y: 1.0863001, z: 1}
   m_LocalScale: {x: 0.057755, y: 0.057755, z: 0.057755}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -906,15 +906,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594277f1345116d4597a176dbf403efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myself: {fileID: 526961056}
-  player: {fileID: 1309707483}
-  holdPos: {fileID: 963194228}
-  isPicked: 1
+  isPicked: 0
   pickUpScript: {fileID: 963194229}
   fpsController: {fileID: 1309707485}
+  holdPos: {fileID: 963194228}
+  myself: {fileID: 526961056}
   smoothSpeed: 1
   tagObjectCollider: Red
-  holdLayerNumber: 0
+  player: {fileID: 1309707483}
 --- !u!1 &532526506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,7 +1989,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2076,11 +2075,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1ca3d0368eab1428f22c00d9d3fb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validateLight: {fileID: 0}
-  lightMaterial1: {fileID: 0}
-  lightMaterial2: {fileID: 0}
+  validateLight: {fileID: 1685533615}
+  lightMaterial1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
+  lightMaterial2: {fileID: 2100000, guid: 59fd263fc10736c47b61cac1f554bfe3, type: 2}
   pluggingPosition: {x: 0, y: 0, z: 0}
-  colorToDetect: 
+  colorToDetect: Red
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

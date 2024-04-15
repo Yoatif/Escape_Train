@@ -18,7 +18,6 @@ public class SC_Socket : MonoBehaviour
     public void ChangelightMaterial(Material newMaterial)
     {
         Renderer lighRenderer = validateLight.GetComponent<Renderer>();
-        Debug.Assert(lighRenderer != null, "Le composant Renderer n'est pas attaché à l'objet de lumière.");
         lighRenderer.material = newMaterial;
     }
 
