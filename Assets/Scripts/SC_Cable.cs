@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class SC_Cable : C_Interactable
 
  
     public bool isPicked = false;
+    public GameObject child;
     public SC_PickUp pickUpScript;
     public SC_FPSController fpsController;
     public Transform holdPos;
@@ -49,15 +51,19 @@ public class SC_Cable : C_Interactable
         //myselfRigidbody.isKinematic = true;
         myself.transform.rotation = Camera.main.transform.rotation;
         myself.transform.Rotate(0, 180, 0);
-        myself.transform.parent = holdPos.transform;
-        myself.transform.position = holdPos.transform.position;
+        //myself.transform.parent = holdPos.transform;
+        //myself.transform.position = holdPos.transform.position;
 
         Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
+        child.transform.SetParent(myTransform);
+
     }
 
     //Fonction pour lâcher l'objet
     void DropObject()
     {
+        isPicked = false;
+        Physics.IgnoreCollision(myself.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
         myself.transform.parent = null;
         pickUpScript.canInteract = true;
     }

@@ -508,8 +508,8 @@ GameObject:
   - component: {fileID: 366924288}
   - component: {fileID: 366924287}
   - component: {fileID: 366924286}
-  - component: {fileID: 366924285}
   - component: {fileID: 366924284}
+  - component: {fileID: 366924290}
   m_Layer: 0
   m_Name: Blue
   m_TagString: canPickUp
@@ -544,27 +544,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &366924285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366924283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e69b5e971464343961301221870722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1309707483}
-  holdPos: {fileID: 963194228}
-  myself: {fileID: 366924283}
-  isPicked: 0
-  pickUpScript: {fileID: 963194229}
-  fpsController: {fileID: 1309707485}
-  smoothSpeed: 4
-  tagObjectCollider: Blue
-  throwForce: 0.1
 --- !u!136 &366924286
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -647,12 +626,33 @@ Transform:
   m_GameObject: {fileID: 366924283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.38409996, y: 0.9435001, z: 1}
-  m_LocalScale: {x: 0.057755, y: 0.057755, z: 0.057755}
+  m_LocalPosition: {x: -0.18997, y: 1.2529, z: 0.98639}
+  m_LocalScale: {x: 0.015895331, y: 0.015895331, z: 0.015895331}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &366924290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366924283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594277f1345116d4597a176dbf403efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPicked: 0
+  child: {fileID: 366924283}
+  pickUpScript: {fileID: 963194229}
+  fpsController: {fileID: 1309707485}
+  holdPos: {fileID: 1065694605}
+  myself: {fileID: 366924283}
+  smoothSpeed: 0
+  tagObjectCollider: Blue
+  player: {fileID: 1309707483}
 --- !u!1 &421100735
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -888,8 +888,8 @@ Transform:
   m_GameObject: {fileID: 526961056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.3841, y: 1.0863001, z: 1}
-  m_LocalScale: {x: 0.057755, y: 0.057755, z: 0.057755}
+  m_LocalPosition: {x: -0.18997, y: 1.2922, z: 0.98639}
+  m_LocalScale: {x: 0.015895331, y: 0.015895331, z: 0.015895331}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -907,9 +907,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPicked: 0
+  child: {fileID: 526961056}
   pickUpScript: {fileID: 963194229}
   fpsController: {fileID: 1309707485}
-  holdPos: {fileID: 963194228}
+  holdPos: {fileID: 1065694605}
   myself: {fileID: 526961056}
   smoothSpeed: 1
   tagObjectCollider: Red
@@ -1580,8 +1581,8 @@ Transform:
   m_GameObject: {fileID: 734312430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.05, y: 1.2168, z: 1}
-  m_LocalScale: {x: 0.11551, y: 0.034823954, z: 0.11551}
+  m_LocalPosition: {x: -0.070497, y: 1.3281, z: 0.98639}
+  m_LocalScale: {x: 0.031790663, y: 0.009584249, z: 0.031790663}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1635789337}
@@ -1596,18 +1597,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 734312430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094297aa5ffc5874e8d5c34b66b80e66, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1ca3d0368eab1428f22c00d9d3fb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorToCombine: Yellow
-  plug:
-  - {fileID: 892161891}
-  - {fileID: 1995638996}
-  - {fileID: 526961056}
-  - {fileID: 366924283}
-  validLight: {fileID: 1635789333}
-  material1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
-  material2: {fileID: 2100000, guid: e6d2061f46bc8a642962f7023ea526be, type: 2}
+  validateLight: {fileID: 1635789333}
+  lightMaterial1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
+  lightMaterial2: {fileID: 2100000, guid: e6d2061f46bc8a642962f7023ea526be, type: 2}
+  pluggingPosition: {x: 0, y: 0, z: 0}
+  colorToDetect: Yellow
 --- !u!1 &789534395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,8 +1778,8 @@ GameObject:
   - component: {fileID: 892161896}
   - component: {fileID: 892161895}
   - component: {fileID: 892161894}
-  - component: {fileID: 892161893}
   - component: {fileID: 892161892}
+  - component: {fileID: 892161898}
   m_Layer: 0
   m_Name: Yellow
   m_TagString: wiredSocket
@@ -1817,27 +1814,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &892161893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 892161891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e69b5e971464343961301221870722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1309707483}
-  holdPos: {fileID: 963194228}
-  myself: {fileID: 892161891}
-  isPicked: 0
-  pickUpScript: {fileID: 0}
-  fpsController: {fileID: 0}
-  smoothSpeed: 4
-  tagObjectCollider: Yellow
-  throwForce: 0.1
 --- !u!136 &892161894
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1920,12 +1896,33 @@ Transform:
   m_GameObject: {fileID: 892161891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.38409996, y: 1.3418, z: 1}
-  m_LocalScale: {x: 0.057755, y: 0.057755, z: 0.057755}
+  m_LocalPosition: {x: -0.18997, y: 1.3625, z: 0.98639}
+  m_LocalScale: {x: 0.015895331, y: 0.015895331, z: 0.015895331}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &892161898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892161891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594277f1345116d4597a176dbf403efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPicked: 0
+  child: {fileID: 892161891}
+  pickUpScript: {fileID: 963194229}
+  fpsController: {fileID: 1309707485}
+  holdPos: {fileID: 1065694605}
+  myself: {fileID: 892161891}
+  smoothSpeed: 0
+  tagObjectCollider: Yellow
+  player: {fileID: 1309707483}
 --- !u!1 &897858611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,7 +1986,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2056,8 +2053,8 @@ Transform:
   m_GameObject: {fileID: 897858611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.05000019, y: 1.0863001, z: 1}
-  m_LocalScale: {x: 0.11551, y: 0.034823954, z: 0.11551}
+  m_LocalPosition: {x: -0.070497, y: 1.2922, z: 0.98639}
+  m_LocalScale: {x: 0.031790663, y: 0.009584249, z: 0.031790663}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1685533619}
@@ -2396,8 +2393,8 @@ Transform:
   m_GameObject: {fileID: 1006517781}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.05000019, y: 1.3418, z: 1}
-  m_LocalScale: {x: 0.11551, y: 0.034823954, z: 0.11551}
+  m_LocalPosition: {x: -0.070497, y: 1.3625, z: 0.98639}
+  m_LocalScale: {x: 0.031790663, y: 0.009584249, z: 0.031790663}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1644348679}
@@ -2412,18 +2409,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1006517781}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094297aa5ffc5874e8d5c34b66b80e66, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1ca3d0368eab1428f22c00d9d3fb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorToCombine: Blue
-  plug:
-  - {fileID: 892161891}
-  - {fileID: 1995638996}
-  - {fileID: 526961056}
-  - {fileID: 366924283}
-  validLight: {fileID: 1644348675}
-  material1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
-  material2: {fileID: 2100000, guid: 4d8999b1a7ba54d429649fd859c30232, type: 2}
+  validateLight: {fileID: 1644348675}
+  lightMaterial1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
+  lightMaterial2: {fileID: 2100000, guid: 4d8999b1a7ba54d429649fd859c30232, type: 2}
+  pluggingPosition: {x: 0, y: 0, z: 0}
+  colorToDetect: 
 --- !u!1 &1057766209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,7 +2517,7 @@ Transform:
   m_GameObject: {fileID: 1065694604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0.633}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4258,8 +4251,8 @@ GameObject:
   - component: {fileID: 1995639001}
   - component: {fileID: 1995639000}
   - component: {fileID: 1995638999}
-  - component: {fileID: 1995638998}
   - component: {fileID: 1995638997}
+  - component: {fileID: 1995639003}
   m_Layer: 0
   m_Name: Green
   m_TagString: wiredSocket
@@ -4294,27 +4287,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &1995638998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995638996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e69b5e971464343961301221870722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1309707483}
-  holdPos: {fileID: 963194228}
-  myself: {fileID: 1995638996}
-  isPicked: 0
-  pickUpScript: {fileID: 963194229}
-  fpsController: {fileID: 1309707485}
-  smoothSpeed: 4
-  tagObjectCollider: Green
-  throwForce: 0.1
 --- !u!136 &1995638999
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4397,12 +4369,33 @@ Transform:
   m_GameObject: {fileID: 1995638996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.38409996, y: 1.2168, z: 1}
-  m_LocalScale: {x: 0.057755, y: 0.057755, z: 0.057755}
+  m_LocalPosition: {x: -0.18997, y: 1.3281, z: 0.98639}
+  m_LocalScale: {x: 0.015895331, y: 0.015895331, z: 0.015895331}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1995639003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995638996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594277f1345116d4597a176dbf403efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPicked: 0
+  child: {fileID: 1995638996}
+  pickUpScript: {fileID: 963194229}
+  fpsController: {fileID: 1309707485}
+  holdPos: {fileID: 1065694605}
+  myself: {fileID: 1995638996}
+  smoothSpeed: 0
+  tagObjectCollider: Green
+  player: {fileID: 1309707483}
 --- !u!1 &2054545605
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,8 +4629,8 @@ Transform:
   m_GameObject: {fileID: 2063978044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.05000019, y: 0.94, z: 1}
-  m_LocalScale: {x: 0.11551, y: 0.034823954, z: 0.11551}
+  m_LocalPosition: {x: -0.070497, y: 1.252, z: 0.98639}
+  m_LocalScale: {x: 0.031790663, y: 0.009584249, z: 0.031790663}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1970306425}
@@ -4652,18 +4645,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063978044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 094297aa5ffc5874e8d5c34b66b80e66, type: 3}
+  m_Script: {fileID: 11500000, guid: bd1ca3d0368eab1428f22c00d9d3fb1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorToCombine: Green
-  plug:
-  - {fileID: 892161891}
-  - {fileID: 1995638996}
-  - {fileID: 526961056}
-  - {fileID: 366924283}
-  validLight: {fileID: 1970306421}
-  material1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
-  material2: {fileID: 2100000, guid: c938341b97359fb489f499261fa51abf, type: 2}
+  validateLight: {fileID: 1970306421}
+  lightMaterial1: {fileID: 2100000, guid: a505a4a54f7ed614598b40bf755bdf57, type: 2}
+  lightMaterial2: {fileID: 2100000, guid: c938341b97359fb489f499261fa51abf, type: 2}
+  pluggingPosition: {x: 0, y: 0, z: 0}
+  colorToDetect: Green
 --- !u!1 &2084212663
 GameObject:
   m_ObjectHideFlags: 0

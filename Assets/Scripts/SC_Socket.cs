@@ -23,9 +23,24 @@ public class SC_Socket : MonoBehaviour
 
     /*Detect the collosion of the cable if the tag is good lock the position
      else start the fuction returning the object at his initial position*/
-    void OnCollisionEnter(Collision collision)
+    /*void OnCollisionEnter(Collision collision)
     {
         SC_Cable cableScript = collision.gameObject.GetComponent<SC_Cable>();
+        if (cableScript != null && cableScript.GetTagObjectCollider() == colorToDetect)
+        {
+            Debug.Log("Good Color");
+            ChangelightMaterial(lightMaterial2);
+            ModifyPosition(cableScript.gameObject);
+        }
+        else if (cableScript != null)
+        {
+            Debug.Log("wrong color");
+            cableScript.ReturnToInitialPosition();
+        }
+    }*/
+    private void OnTriggerEnter(Collider other)
+    {
+        SC_Cable cableScript = other.gameObject.GetComponent<SC_Cable>();
         if (cableScript != null && cableScript.GetTagObjectCollider() == colorToDetect)
         {
             Debug.Log("Good Color");
